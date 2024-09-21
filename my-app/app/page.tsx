@@ -7,7 +7,7 @@ export default  function Home() {
 
 const getData  = async () => {
   await new Promise<void>((resolve) => setTimeout(resolve, 1000))
-  // 为什么getData中不能使用dispatch更新dom？
+  // 为什么getData中不能使用setData更新dom？而是必须return data
   return {
     data: '这是第一层pages'
   }
