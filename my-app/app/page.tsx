@@ -13,8 +13,8 @@ const getData  = async () => {
   }
 }
 
-  // const {data} = await getData()
   const {data} = use(getData()) 
+  
   return (
     <div>hello, {data}</div>
   );
