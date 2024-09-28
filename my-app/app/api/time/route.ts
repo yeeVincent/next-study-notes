@@ -1,11 +1,8 @@
-import { NextRequest } from "next/server"
-export const dynamic = 'force-dynamic'
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-  return Response.json({ data: new Date().toLocaleTimeString(), params: searchParams.toString() })
-}
-
-export async function POST() {
-  console.log('POST /api/time')
-  return Response.json({ data: new Date().toLocaleTimeString() })
+export async function GET() {
+  const res = await fetch('https://api.thecatapi.com/v1/images/search', {
+    next: { revalidate: 5 }, //  每 5 秒重新验证
+  })
+  const data = await res.json()
+  console.log(data)
+  return Response.json(data)
 }
