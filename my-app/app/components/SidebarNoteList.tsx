@@ -1,22 +1,24 @@
-import SidebarNoteItem from 'components/SidebarNoteItem';
-import { getAllNotes } from '@/lib/redis';
+import { getAllNotes } from '@/lib/redis'
+import { sleep } from '@/lib/utils'
+import SidebarNoteListFilter from './SidebarNoteListFilter'
+import SidebarNoteItem from './SidebarNoteItem'
 export default async function NoteList() {
-  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-  await sleep(1000);
+  await sleep(1000)
   const notes = await getAllNotes()
-  const arr = Object.entries(notes);
-
+  const arr = Object.entries(notes)
   if (arr.length == 0) {
-    return <div className="notes-empty">
-      {'No notes created yet!'}
-    </div>
+    return <div className="notes-empty">{'No notes created yet!'}</div>
   }
 
-  return <ul className="notes-list">
-    {arr.map(([noteId, note]) => {
-    return <li key={noteId}>
-       <SidebarNoteItem noteId={noteId} note={JSON.parse(note)} />
-    </li>
-  })}
-  </ul>
+  return (
+    <ul className="notes-list">
+      {Object.entries(notes).map(([noteId, note]) => {
+        return (
+          <li key={noteId}>
+            <SidebarNoteListFilter noteData={JSON.parse(note)} noteItem={<SidebarNoteItem noteId={noteId} note={JSON.parse(note)} />}></SidebarNoteListFilter>
+          </li>
+        )
+      })}
+    </ul>
+  )
 }

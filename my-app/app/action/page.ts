@@ -12,7 +12,7 @@ const schema = z.object({
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
-export async function saveNote(prevState: any, formData: { get: (arg0: string) => any; }) {
+export async function saveNote(prevState: unknown, formData: { get: (arg0: string) => string; }) {
   const noteId = formData.get('noteId');
 
   const data = {
@@ -47,8 +47,9 @@ export async function saveNote(prevState: any, formData: { get: (arg0: string) =
   return { message: `Add Success!` };
 }
 
-export async function deleteNote(prevState, formData) {
+export async function deleteNote(prevState: unknown, formData: { get: (arg0: string) => string; }) {
   const noteId = formData.get('noteId');
+  
   await delNote(noteId);
   revalidatePath('/', 'layout');
   redirect('/');
