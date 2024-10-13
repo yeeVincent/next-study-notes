@@ -5,9 +5,12 @@ import SidebarSearchField from '@/components/SidebarSearchField';
 import SidebarNoteList from '@/components/SidebarNoteList';
 import EditButton from './EditButton';
 import NoteListSkeleton from './NoteListSkeleton';
-export default async function Sidebar() {
+// import { useTranslation } from '@/i18n';
+export default async function Sidebar({ lng }: { lng : string }) {
   // const notes = await getAllNotes()
   // console.log(notes,'notes')
+  // const { t } = await useTranslation(lng)
+  console.log(lng,'lng')
   return (
     <>
       <section className="col sidebar">
@@ -25,8 +28,8 @@ export default async function Sidebar() {
           </section>
         </Link>
         <section className="sidebar-menu" role="menubar">
-            <SidebarSearchField />
-            <EditButton noteId={null}>New</EditButton>
+            <SidebarSearchField lng={lng}/>
+            <EditButton noteId={null}>+</EditButton>
         </section>
         <nav>
         <Suspense fallback={<NoteListSkeleton />}>
