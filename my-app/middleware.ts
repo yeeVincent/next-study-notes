@@ -1,7 +1,7 @@
 
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
-import { locales, defaultLocale } from './config'
+import { locales, defaultLocale } from './app/config'
 import { NextResponse } from 'next/server';
 
 function getLocale(request: { headers: { get: (arg0: string) => unknown; }; }) { 

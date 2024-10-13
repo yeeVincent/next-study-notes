@@ -1,6 +1,10 @@
 import './style.css'
 import Sidebar from '@/components/Sidebar'
+import { locales } from '@/config'
 
+export async function generateStaticParams() {
+  return locales.map((lng) => ({ lng }))
+}
 export default async function RootLayout({
   children,
   params: {
