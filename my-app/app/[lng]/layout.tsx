@@ -2,11 +2,14 @@ import './style.css'
 import Sidebar from '@/components/Sidebar'
 
 export default async function RootLayout({
-  children
-}: { children: React.ReactNode }) {
+  children,
+  params: {
+    lng
+  }
+}: { children: React.ReactNode, params: { lng: string} }) {
 
   return (
-    <html lang="en">
+    <html lang={lng}>
       <body>
         <div className="container">
           <div className="main">

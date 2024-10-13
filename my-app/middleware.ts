@@ -2,6 +2,7 @@
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
 import { locales, defaultLocale } from './config'
+import { NextResponse } from 'next/server';
 
 function getLocale(request: { headers: { get: (arg0: string) => unknown; }; }) { 
   const headers = { 'accept-language': request.headers.get('accept-language') as string || '' };
@@ -10,6 +11,9 @@ function getLocale(request: { headers: { get: (arg0: string) => unknown; }; }) {
 
   return match(languages, locales, defaultLocale)
  }
+
+ const publicFile = /\.(.*)$/
+ const excludeFile = ['logo.svg']
  
 export function middleware(request: { nextUrl: any; headers: { get: (arg0: string) => unknown; }; } ) {
 console.log(`output->进入了middleware`)
@@ -22,12 +26,20 @@ console.log(`output->进入了middleware`)
   )
  
   if (pathnameHasLocale) return
+
+    // 如果是 public 文件，不重定向
+    if (publicFile.test(pathname) && excludeFile.indexOf(pathname.substr(1)) == -1) return
  
   // 获取匹配的 locale
   const locale = getLocale(request)
   console.log("🚀 ~ middleware ~ locale:", locale)
   
   request.nextUrl.pathname = `/${locale}${pathname}`
+
+   // 默认语言不重定向
+   if (locale == defaultLocale) {
+    return NextResponse.rewrite(request.nextUrl)
+  }
   // 重定向，如 /products 重定向到 /en-US/products
   return Response.redirect(request.nextUrl)
 }
