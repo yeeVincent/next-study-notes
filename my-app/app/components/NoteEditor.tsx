@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import NotePreview from 'components/NotePreview'
+import NotePreview from '@/components/NotePreview'
 import { useFormState } from 'react-dom'
-import { deleteNote, saveNote } from '@/action/page'
+import { deleteNote, saveNote } from '@/actions'
 import SaveButton from './SaveButton'
 import DeleteButton from './DeleteButton'
 

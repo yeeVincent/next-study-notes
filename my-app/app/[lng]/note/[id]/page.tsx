@@ -1,4 +1,4 @@
-import Note from 'components/Note'
+import Note from '@/components/Note'
 import {getNote} from '@/lib/redis';
 
 export default async function Page({ params }: { params: { id: string } }) {
