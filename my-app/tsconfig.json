@@ -13,6 +13,10 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "useUnknownInCatchVariables": false,
     "plugins": [
       {
         "name": "next"

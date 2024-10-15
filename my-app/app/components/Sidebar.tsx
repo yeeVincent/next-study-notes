@@ -5,7 +5,7 @@ import SidebarSearchField from '@/components/SidebarSearchField';
 import SidebarNoteList from '@/components/SidebarNoteList';
 import EditButton from './EditButton';
 import NoteListSkeleton from './NoteListSkeleton';
-import SidebarImport from './SidebarImport';
+import SidebarImport from './SidebarImport_action';
 // import { useTranslation } from '@/i18n';
 export default async function Sidebar({ lng }: { lng : string }) {
   // const notes = await getAllNotes()

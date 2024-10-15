@@ -1,0 +1,17 @@
+
+```json
+{
+  "compilerOptions": {
+    "rootDir": "./src",  // 打包入口
+    "outDir": "./dist",  // 打包文件出口
+     "target": "es2016",  // 编译结果版本
+     "moduleResolution" : "node", // node为从内层到最外层查找import
+     // classic 为从外层到最内层查找import，node模式更常用
+     "resolveJsonModule" : true , // 是否解析json文件
+     "allowJs": true, // 允许引入和编译js文件
+     "checkJs": true, // 允许检测js文件
+     "declaration": true, // 会根据ts文件生成.d.ts文件
+     "sourceMap": true // 源文件索引
+  }
+}
+```
