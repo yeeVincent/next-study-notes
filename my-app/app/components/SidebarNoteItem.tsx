@@ -1,7 +1,7 @@
 
 import SidebarNoteItemContent from '@/components/SidebarNoteItemContent';
 import SidebarNoteHeader from './SidebarNoteHeader';
-import { NoteItem } from '@/lib/redis';
+import { NoteItem } from '@/lib/strapi';
 
 export default function SidebarNoteItem({ noteId, note}: { noteId: string, note: NoteItem }) {
 

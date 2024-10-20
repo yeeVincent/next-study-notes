@@ -1,10 +1,11 @@
-import { getAllNotes } from '@/lib/redis'
+import { getAllNotes } from '@/lib/strapi'
 import { sleep } from '@/lib/utils'
 import SidebarNoteListFilter from './SidebarNoteListFilter'
 import SidebarNoteItem from './SidebarNoteItem'
 export default async function NoteList() {
   await sleep(1000)
   const notes = await getAllNotes()
+  if(!notes)return
   const arr = Object.entries(notes)
   if (arr.length == 0) {
     return <div className="notes-empty">{'No notes created yet!'}</div>
