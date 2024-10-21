@@ -1,5 +1,5 @@
-import NoteEditor from 'components/NoteEditor'
-import {getNote} from '@/lib/strapi';
+import NoteEditor from '@/components/NoteEditor'
+import {getNote} from '@/lib/prisma';
 
 export default async function EditPage({ params }: { params: { id: string } }) {
   const noteId = params.id;
